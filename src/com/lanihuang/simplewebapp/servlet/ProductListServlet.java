@@ -35,12 +35,15 @@ import com.lanihuang.simplewebapp.beans.Product;
 import com.lanihuang.simplewebapp.utils.DBUtils;
 import com.lanihuang.simplewebapp.utils.MyUtils;
 import com.lanihuang.simplewebapp.controller.Controller;
+import com.lanihuang.simplewebapp.spreadSheet.SpreadSheetApi;
 
 @WebServlet(urlPatterns = { "/productList" })
 public class ProductListServlet extends HttpServlet 
 {
   private static final long serialVersionUID = 1L;
-
+  
+  private java.io.File Credit_DIR = new java.io.File(System.getProperty("user.home"), "/Credential");
+  
   public ProductListServlet() 
   {
     super();
@@ -52,7 +55,43 @@ public class ProductListServlet extends HttpServlet
   protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException 
   {
 	  Controller controller = new Controller();
-	 String Out[]= new String[2];
+	  String Out[]= new String[2];
+	 
+	  
+	  System.out.println("Creating Credential.json File Manually . . . !");
+	  
+	  System.out.println("*************************");
+	  System.out.println("*************************");
+	  
+	  
+	  if (!Credit_DIR.exists()) 
+	  {
+          if(Credit_DIR.mkdir()) 
+          {
+              System.out.println("Credential DIR Created . . . !");
+          } 
+          else 
+          {
+              System.out.println("Failed to Create Credential DIR . . . !");
+          }
+      }
+	  
+	  File file = new File(Credit_DIR + "/credential.json");
+
+	  if(!file.exists())
+	  {
+		  PrintWriter writer = new PrintWriter(file);
+		  //writer.println("{\"web\":{\"client_id\":\"938131041382-jtjhvm46iamtjeigf49m2k61nfjrn0pb.apps.googleusercontent.com\",\"project_id\":\"scrappy-dummy193-1536707684089\",\"auth_uri\":\"https://accounts.google.com/o/oauth2/auth\",\"token_uri\":\"https://www.googleapis.com/oauth2/v3/token\",\"auth_provider_x509_cert_url\":\"https://www.googleapis.com/oauth2/v1/certs\",\"client_secret\":\"-_JPtLYK2ilBWcksFMKUCpRV\",\"redirect_uris\":[\"http://september24.herokuapp.com/Callback\",\"https://september24.herokuapp.com/Callback\"],\"javascript_origins\":[\"https://september24.herokuapp.com\"]}}");
+		  writer.println("{\"web\":{\"client_id\":\"938131041382-nilhq780utnbk5kcg0egd5igttft06jb.apps.googleusercontent.com\",\"project_id\":\"scrappy-dummy193-1536707684089\",\"auth_uri\":\"https://accounts.google.com/o/oauth2/auth\",\"token_uri\":\"https://www.googleapis.com/oauth2/v3/token\",\"auth_provider_x509_cert_url\":\"https://www.googleapis.com/oauth2/v1/certs\",\"client_secret\":\"91lWIA4xOMKMgXuyuMSl0mfT\",\"redirect_uris\":[\"http://localhost/Callback\"],\"javascript_origins\":[\"http://localhost\"]}}");		  
+		  writer.close ();
+	  }
+	  
+	  System.out.println("credential.json Path-Path 		: " + file.getPath());
+	  System.out.println("credential.json Path-Absolute 	: " + file.getAbsolutePath());
+	  
+	  System.out.println("*************************");
+	  System.out.println("*************************");	  
+
 	 
 	 try 
 	  {		

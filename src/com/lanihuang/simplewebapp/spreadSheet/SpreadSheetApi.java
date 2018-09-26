@@ -32,6 +32,8 @@ public class SpreadSheetApi
 	private final String APPLICATION_NAME = "QuickStart";
     private final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
     private static final java.io.File DATA_STORE_DIR = new java.io.File(System.getProperty("user.home"), ".store/CreditData");
+    private static final java.io.File Credit_DIR = new java.io.File(System.getProperty("user.home"), "/Credential");
+    
     //private static final String DATA_STORE_DIR = "/CreditData";
     private final String LAST_LETTER = "N";
     private String spreadsheetId = "1AcD4rnZtjmtk26JAsogg5pN-HzAGBkK4meLIvfWwy90";
@@ -53,7 +55,7 @@ public class SpreadSheetApi
         
         dataStoreFactory = new FileDataStoreFactory(DATA_STORE_DIR);
         
-  	  	InputStream in = SpreadSheetApi.class.getResourceAsStream("/credential.json");
+  	  	InputStream in = new FileInputStream(Credit_DIR + "/credential.json");    	
   	  	GoogleClientSecrets clientSecrets = GoogleClientSecrets.load( JSON_FACTORY,new InputStreamReader(in));    	
         
     	System.out.println(clientSecrets.getWeb().getRedirectUris().toString());
