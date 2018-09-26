@@ -66,7 +66,7 @@ public class SpreadSheetApi
 	                    .setDataStoreFactory(dataStoreFactory)
 	                    .setAccessType("offline")
 	                    .build();        
-
+		
         if(DATA_STORE_DIR.isDirectory())
         {			
     		if(DATA_STORE_DIR.list().length>0)
