@@ -84,6 +84,8 @@ public class ProductListServlet extends HttpServlet
 		  writer.println("{\"web\":{\"client_id\":\"938131041382-jtjhvm46iamtjeigf49m2k61nfjrn0pb.apps.googleusercontent.com\",\"project_id\":\"scrappy-dummy193-1536707684089\",\"auth_uri\":\"https://accounts.google.com/o/oauth2/auth\",\"token_uri\":\"https://www.googleapis.com/oauth2/v3/token\",\"auth_provider_x509_cert_url\":\"https://www.googleapis.com/oauth2/v1/certs\",\"client_secret\":\"-_JPtLYK2ilBWcksFMKUCpRV\",\"redirect_uris\":[\"http://september26.herokuapp.com/\",\"http://september26.herokuapp.com\",\"http://september26.herokuapp.com/productList\"],\"javascript_origins\":[\"http://september26.herokuapp.com\",\"https://september26.herokuapp.com\"]}}");
 		  //writer.println("{\"web\":{\"client_id\":\"938131041382-nilhq780utnbk5kcg0egd5igttft06jb.apps.googleusercontent.com\",\"project_id\":\"scrappy-dummy193-1536707684089\",\"auth_uri\":\"https://accounts.google.com/o/oauth2/auth\",\"token_uri\":\"https://www.googleapis.com/oauth2/v3/token\",\"auth_provider_x509_cert_url\":\"https://www.googleapis.com/oauth2/v1/certs\",\"client_secret\":\"91lWIA4xOMKMgXuyuMSl0mfT\",\"redirect_uris\":[\"http://localhost/Callback\"],\"javascript_origins\":[\"http://localhost\"]}}");		  
 		  writer.close ();
+		  
+		  System.out.println("Yes credential.json is Created . . . !");
 	  }
 	  
 	  System.out.println("credential.json Path-Path 		: " + file.getPath());

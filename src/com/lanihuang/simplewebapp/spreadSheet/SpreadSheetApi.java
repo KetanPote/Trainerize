@@ -64,6 +64,7 @@ public class SpreadSheetApi
 	            new GoogleAuthorizationCodeFlow.Builder(
 	            		httpTransport, JSON_FACTORY,clientSecrets, SCOPES)
 	                    .setDataStoreFactory(dataStoreFactory)
+	                    .setApprovalPrompt("force")
 	                    .setAccessType("offline")
 	                    .build();        
 		
@@ -78,6 +79,9 @@ public class SpreadSheetApi
     	{    		
     		System.out.println("This is not a directory");    			
     	}        
+        
+       flow.newAuthorizationUrl().setScopes(SCOPES).setAccessType("offline").setApprovalPrompt("force").setClientId("938131041382-jtjhvm46iamtjeigf49m2k61nfjrn0pb.apps.googleusercontent.com")
+       .setRedirectUri("http://september26.herokuapp.com/Callback");       
        
        Credential credential = new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("user");
        
